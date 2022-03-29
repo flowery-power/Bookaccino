@@ -12,7 +12,7 @@ from django.views.generic import TemplateView, CreateView, DeleteView, ListView
 from django.views.generic.detail import SingleObjectMixin
 
 from bookaccino.book.forms import ProfileBookStateForm
-from bookaccino.book.models import Book, Comment, Genre, Quote, Like, ProfileBook
+from bookaccino.book.models import Book, Comment, Genre, Quote, ProfileBook
 from bookaccino.core.BootstrapFormMixin import BootstrapFormViewMixin
 
 
@@ -221,18 +221,3 @@ def book_details(request, pk):
     }
     return render(request, 'books/book-details.html', data)
 
-
-class LikeBookView(LoginRequiredMixin, View):
-    def post(self, request, *args, **kwargs):
-        book = Book.objects.get(pk=self.kwargs['pk'])
-        like_object_by_user = book.like_set.filter(user_id=self.request.user.id) \
-            .first()
-        if like_object_by_user:
-            like_object_by_user.delete()
-        else:
-            like = Like(
-                book=book,
-                user=self.request.user,
-            )
-            like.save()
-        return redirect('details book', book.id)

@@ -91,11 +91,3 @@ class Quote(models.Model):
     author = models.CharField(
         max_length=200,
     )
-
-
-class Like(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        UserModel,
-        on_delete=models.CASCADE,
-    )
