@@ -1,0 +1,28 @@
+#header {
+    background-color: #EE4C7C !important;
+    color: #ffffff !important;
+    box-shadow: 0px 0px 3px 0px #ff0000;
+}
+#header a:link, #header a:visited {
+        color: #000 !important;
+    }
+
+
+div.breadcrumbs {
+    background-color: #EE4C7C !important;
+}
+
+
+
+.module h2, .module caption, .inline-group h2 {
+    background-color: #EE4C7C !important;
+}
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+        background-color: #EE4C7C !important;
+
+}
+
+#nav-sidebar .current-model{
+        background-color: #E3e2df !important;
+
+}

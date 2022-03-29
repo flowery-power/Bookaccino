@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- Header End -->
+
+    <!-- Normal Breadcrumb Begin -->
+    <!-- Normal Breadcrumb End -->
+
+    <!-- Login Section Begin -->
+    <section class="login spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="login__form login__form-login">
+                        <h3>Login</h3>
+
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+
+                            {% for field in form %}
+                                <div class="input__item">
+                                    <label class="white-label">{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+
+                            {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-danger alert-dismissible fade show"> {{ error }}
+
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+                            <button type="submit" class="site-btn">Login</button>
+
+                        </form>
+
+
+                        {#                            <div class="input__item">#}
+                        {#                                <input type="text" placeholder="Email address">#}
+                        {#                                <span class="icon_mail"></span>#}
+                        {#                            </div>#}
+                        {#                            <div class="input__item">#}
+                        {#                                <input type="text" placeholder="Password">#}
+                        {#                                <span class="icon_lock"></span>#}
+                        {#                            </div>#}
+                        {#                        </form>#}
+                        {#                        <a href="#" class="forget_pass">Forgot Your Password?</a>#}
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="login__register">
+                        <h3>Dont’t Have An Account?</h3>
+                        <a href="{% url 'sign up' %}" class="primary-btn">Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Login Section End -->
+
+    <!-- Footer Section Begin -->
+
+{% endblock %}

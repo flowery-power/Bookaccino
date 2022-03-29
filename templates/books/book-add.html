@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="col-lg-6">
+        <div class="login__form">
+            <h3>Create Book</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="input__item">
+                        <label class="white-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}{#                            <div class="input__item">#}
+                {#                                <input type="text" placeholder="Email address">#}
+                {#                                <span class="icon_mail"></span>#}
+                {#                            </div>#}
+                {#                            <div class="input__item">#}
+                {#                                <input type="text" placeholder="Password">#}
+                {#                                <span class="icon_lock"></span>#}
+                {#                            </div>#}
+                <button type="submit" class="site-btn">Login Now</button>
+            </form>
+{#            <a href="#" class="forget_pass">Forgot Your Password?</a>#}
+        </div>
+    </div>
+
+{% endblock %}

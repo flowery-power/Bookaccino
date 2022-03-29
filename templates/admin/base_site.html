@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+{%  load static %}
+
+{% block branding %}
+<h1 id="head"></h1>
+    <a href="/admin" ><img src="{%  static 'img/bookaccino.jpg'%}" alt="" class = "brand_img" ></a>
+{#    слага се лого, но трябва да си го направя първо!#}
+{% endblock %}
+
+{%  block extrastyle  %}
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock  %}

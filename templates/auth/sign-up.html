@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- Header End -->
+
+    <!-- Normal Breadcrumb Begin -->
+    <!-- Normal Breadcrumb End -->
+
+    <!-- Signup Section Begin -->
+    <section class="signup spad">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div class="login__form">
+                        <h3>Register</h3>
+                        <form action="#" method="POST">
+                              {% csrf_token %}
+                             {% for field in form %}
+                                <div class="input__item">
+                                    <label class="white-label">{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+
+
+                            {% if signup_form.errors %}
+                            {% for field in signup_form %}
+                            {% for error in field.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show"> {{ error}}
+
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+                            {% endif %}
+                            <button type="submit" class="site-btn">Register</button>
+                        </form>
+                        <h5>Already have an account? <a href="{% url 'sign in' %}">Log In!</a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Signup Section End -->
+
+    <!-- Footer Section Begin -->
+
+{% endblock %}

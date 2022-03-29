@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="trending__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Most Liked Books</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for book in books %}
+
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="{{ book.image.url }}">
+                                            {#                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>#}
+                                            {#                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>#}
+                                        </div>
+                                        <div class="product__item__text">
+                                            <ul>
+                                                <li>{{ book.genre }}</li>
+                                            </ul>
+                                            <h5><a href="{% url "details book" book.id %}">{{ book.title }}</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    <div class="recent__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Recently Added </h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                             {% for book in recently %}
+
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="{{ book.image.url }}">
+                                            {#                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>#}
+                                            {#                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>#}
+                                        </div>
+                                        <div class="product__item__text">
+                                            <ul>
+                                                <li>{{ book.genre }}</li>
+                                            </ul>
+                                            <h5><a href="{% url "details book" book.id %}">{{ book.title }}</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+{#                            <div class="col-lg-4 col-md-6 col-sm-6">#}
+{#                                <div class="product__item">#}
+{#                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-6.jpg">#}
+{##}
+{#                                    </div>#}
+{#                                    <div class="product__item__text">#}
+{#                                        <ul>#}
+{#                                            <li>Active</li>#}
+{#                                            <li>Movie</li>#}
+{#                                        </ul>#}
+{#                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+                        </div>
+
+                    </div>
+                    <div class="live__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h5>Quotes</h5>
+                                    <p class="quote">{{ quote.text }}</p>
+                                    <p class="author">{{ quote.author }}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+{#                                <div class="btn__all">#}
+{#                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>#}
+{#                                </div>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="product__sidebar">
+                        <div class="product__sidebar__comment">
+                            <div class="section-title">
+                                <h5>Most Popular</h5>
+                            </div>
+                            <div class="product__sidebar__comment__item">
+                                <div class="product__sidebar__comment__item__pic">
+                                    <img src="{{ mostPopular.image.url }}">
+                                </div>
+                                <div class="product__sidebar__comment__item__text">
+                                    <ul>
+                                        <li>Active</li>
+                                        <li>Movie</li>
+                                    </ul>
+                                    <h5><a href="#">{{ mostPopular.title }}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__sidebar__comment">
+                            <div class="section-title">
+                                <h5>Listopia</h5>
+                            </div>
+                            {% for b in listopia %}
+                                <div class="product__sidebar__comment__item">
+                                    <div class="product__sidebar__comment__item__pic">
+                                        <img src="{{ b.image.url }}"> alt="">
+                                    </div>
+                                    <div class="product__sidebar__comment__item__text">
+                                        <ul>
+                                            <li>{{ b.genre }}</li>
+                                        </ul>
+                                        <h5><a href="#">{{ b.title }}</a></h5>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+

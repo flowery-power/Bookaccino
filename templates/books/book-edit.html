@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <section class="edit spad">
+        <div class="col-lg-6">
+            <div class="login__form">
+                <h3>Edit Book</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="input__item">
+                            <label class="white-label">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="site-btn">Edit</button>
+
+                </form>
+                {#                        <a href="#" class="forget_pass">Forgot Your Password?</a>#}
+            </div>
+        </div>
+    </section>
+{% endblock %}
