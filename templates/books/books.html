@@ -3,31 +3,29 @@
 
 {% block content %}
 
-    <section class="product spad">
+    <section class="product-page">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="trending__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>MY BOOKS</h4>
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div>
+                                    <div class="section-title">
+                                        <h4>Currently Reading</h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
+{#                                <div class="col-lg-4 col-md-4 col-sm-6">#}
+{#                                    <div class="product__page__filter">#}
+{#                                    </div>#}
+{#                                </div>#}
                             </div>
                         </div>
                         <div class="row">
-                            {% for book in books %}
-
+                            {% for book in page_current %}
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
                                         <div class="product__item__pic set-bg" data-setbg="{{ book.image.url }}">
-                                            {#                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>#}
-                                            {#                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>#}
                                         </div>
                                         <div class="product__item__text">
                                             <ul>
@@ -39,130 +37,129 @@
                                     </div>
                                 </div>
                             {% endfor %}
-
                         </div>
                     </div>
-                    <div class="recent__product">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                <div class="section-title">
-                                    <h4>CURRENTLY READING</h4>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                <div class="btn__all">
-                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                             {% for book in recently %}
 
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="{{ book.image.url }}">
-                                            {#                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>#}
-                                            {#                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>#}
-                                        </div>
-                                        <div class="product__item__text">
-                                            <ul>
-                                                <li>{{ book.genre }}</li>
-                                            </ul>
-                                            <h5><a href="{% url "details book" book.id %}">{{ book.title }}</a>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-{#                            <div class="col-lg-4 col-md-6 col-sm-6">#}
-{#                                <div class="product__item">#}
-{#                                    <div class="product__item__pic set-bg" data-setbg="img/recent/recent-6.jpg">#}
-{##}
-{#                                    </div>#}
-{#                                    <div class="product__item__text">#}
-{#                                        <ul>#}
-{#                                            <li>Active</li>#}
-{#                                            <li>Movie</li>#}
-{#                                        </ul>#}
-{#                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-                        </div>
 
+                    <div class="product__pagination">
+                        {% for i in page_current.paginator.page_range %}
+                            {% if page_current.number == i %}
+                                <a href="#" class="current-page">{{ i }}</a>
+                            {% elif i > page_current.number|add:'-5' and i < page_current.number|add:'5' %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_current.has_next %}
+                            <a href="?page={{ page_current.next_page_number }}"><i class="fa fa-angle-double-right"></i></a>
+                        {% endif %}
                     </div>
-{#                    <div class="live__product">#}
-{#                        <div class="row">#}
-{#                            <div class="col-lg-8 col-md-8 col-sm-8">#}
-{#                                <div class="section-title">#}
-{#                                    <h5>Quotes</h5>#}
-{#                                    <p>{{ quotes }}</p>>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-lg-4 col-md-4 col-sm-4">#}
-{#                                <div class="btn__all">#}
-{#                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="product__sidebar">
-                        <div class="product__sidebar__comment">
-                            <div class="section-title">
-                                <h5>WANT TO READ </h5>
-                            </div>
-                            <div class="product__sidebar__comment__item">
-                                <div class="product__sidebar__comment__item__pic">
-                                    <img src="{{ mostPopular.image.url }}">
+            </div>
+        </div>
+    </section>
+    <section class="product-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Want to read</h4>
+                                    </div>
                                 </div>
-                                <div class="product__sidebar__comment__item__text">
-                                    <ul>
-                                        <li>Active</li>
-                                        <li>Movie</li>
-                                    </ul>
-                                    <h5><a href="#">{{ mostPopular.title }}</a></h5>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="product__page__filter">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-{#                        <div class="product__sidebar__comment">#}
-                            <div class="section-title">
-                                <h5>CURRENTLY READING</h5>
-                            </div>
-                            {% for b in listopia %}
-                                <div class="product__sidebar__comment__item">
-                                    <div class="product__sidebar__comment__item__pic">
-                                        <img src="{{ b.image.url }}">
-                                    </div>
-                                    <div class="product__sidebar__comment__item__text">
-                                        <ul>
-                                            <li>{{ b.genre }}</li>
-                                        </ul>
-                                        <h5><a href="#">{{ b.title }}</a></h5>
+                        <div class="row">
+                            {% for book in page_want %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="{{ book.image.url }}">
+                                        </div>
+                                        <div class="product__item__text">
+                                            <ul>
+                                                <li>{{ book.genre }}</li>
+                                            </ul>
+                                            <h5><a href="{% url "details book" book.id %}">{{ book.title }}</a>
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
                             {% endfor %}
                         </div>
-                                            <div class="product__sidebar__comment">
-                            <div class="section-title">
-                                <h5>READ</h5>
-                            </div>
-                            {% for b in listopia %}
-                                <div class="product__sidebar__comment__item">
-                                    <div class="product__sidebar__comment__item__pic">
-                                        <img src="{{ b.image.url }}"> alt="">
-                                    </div>
-                                    <div class="product__sidebar__comment__item__text">
-                                        <ul>
-                                            <li>{{ b.genre }}</li>
-                                        </ul>
-                                        <h5><a href="#">{{ b.title }}</a></h5>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
+                    </div>
 
+
+                    <div class="product__pagination">
+                        {% for i in page_want.paginator.page_range %}
+                            {% if page_want.number == i %}
+                                <a href="#" class="current-page">{{ i }}</a>
+                            {% elif i > page_want.number|add:'-5' and i < page_want.number|add:'5' %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_want.has_next %}
+                            <a href="?page={{ page_want.next_page_number }}"><i class="fa fa-angle-double-right"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Read</h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="product__page__filter">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for book in page_read %}
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product__item">
+                                        <div class="product__item__pic set-bg" data-setbg="{{ book.image.url }}">
+                                        </div>
+                                        <div class="product__item__text">
+                                            <ul>
+                                                <li>{{ book.genre }}</li>
+                                            </ul>
+                                            <h5><a href="{% url "details book" book.id %}">{{ book.title }}</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+
+                    <div class="product__pagination">
+                        {% for i in page_read.paginator.page_range %}
+                            {% if page_read.number == i %}
+                                <a href="#" class="current-page">{{ i }}</a>
+                            {% elif i > page_read.number|add:'-5' and i < page_read.number|add:'5' %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_read.has_next %}
+                            <a href="?page={{ page_read.next_page_number }}"><i class="fa fa-angle-double-right"></i></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

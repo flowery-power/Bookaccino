@@ -76,14 +76,6 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images')
 
 
-class Comment(models.Model):
-    text = models.TextField()
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        UserModel,
-        on_delete=models.CASCADE,
-
-    )
 
 
 class Quote(models.Model):

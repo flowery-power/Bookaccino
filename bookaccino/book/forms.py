@@ -1,6 +1,6 @@
 from django import forms
 
-from bookaccino.book.models import Book, Image, Comment, ProfileBook
+from bookaccino.book.models import Book,  ProfileBook
 
 
 class BookForm(forms.ModelForm):
@@ -13,6 +13,9 @@ class ProfileBookStateForm(forms.ModelForm):
     class Meta:
         model = ProfileBook
         fields = ('book_state',)
+        labels = {
+            'book_state': '',
+        }
 
 
 class AddBookForm(BookForm):

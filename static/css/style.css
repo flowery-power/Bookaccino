@@ -1104,6 +1104,7 @@ ol {
 }
 
 .anime__details__btn .follow-btn {
+    border: none;
     font-size: 13px;
     color: #ffffff;
     background: #e53637;
@@ -1115,7 +1116,9 @@ ol {
     border-radius: 4px;
     margin-right: 11px;
 }
-
+.anime__details__btn .form-btn {
+    margin-left: 15px;
+}
 .anime__details__btn .watch-btn span {
     font-size: 13px;
     color: #ffffff;
@@ -1243,6 +1246,13 @@ ol {
     font-family: serif;
     line-height: normal;
 
+}
+
+
+.img_tag_small{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
 }
 
 /*---------------------

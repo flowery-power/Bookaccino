@@ -97,7 +97,7 @@
                                         <ul>
                                             <li>{{ b.genre }}</li>
                                         </ul>
-                                        <h5><a href="#">{{ b.title }}</a></h5>
+                                        <h5><a href="{% url "details book" b.id %}">{{ b.title }}</a></h5>
                                     </div>
                                 </div>
                             {% endfor %}                        </div>
@@ -114,7 +114,7 @@
                                         <ul>
                                             <li>{{ b.genre }}</li>
                                         </ul>
-                                        <h5><a href="#">{{ b.title }}</a></h5>
+                                        <h5><a href="{% url "details book" b.id %}">{{ b.title }}</a></h5>
                                     </div>
                                 </div>
                             {% endfor %}
@@ -132,7 +132,7 @@
                                         <ul>
                                             <li>{{ b.genre }}</li>
                                         </ul>
-                                        <h5><a href="#">{{ b.title }}</a></h5>
+                                        <h5><a href="{% url "details book" b.id %}">{{ b.title }}</a></h5>
                                     </div>
                                 </div>
                             {% endfor %}

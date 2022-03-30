@@ -17,12 +17,6 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="product__page__filter">
-                                        {#                                        <p>Order by:</p>#}
-                                        {#                                        <select>#}
-                                        {#                                            <option value="">A-Z</option>#}
-                                        {#                                            <option value="">1-10</option>#}
-                                        {#                                            <option value="">10-50</option>#}
-                                        {#                                        </select>#}
                                     </div>
                                 </div>
                             </div>
@@ -32,8 +26,6 @@
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
                                         <div class="product__item__pic set-bg" data-setbg="{{ book.image.url }}">
-                                            {#                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>#}
-                                            {#                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>#}
                                         </div>
                                         <div class="product__item__text">
                                             <ul>
@@ -45,36 +37,6 @@
                                     </div>
                                 </div>
                             {% endfor %}
-
-                            {#                            <div class="col-lg-4 col-md-6 col-sm-6">#}
-                            {#                                <div class="product__item">#}
-                            {#                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-1.jpg">#}
-                            {##}
-                            {#                                    </div>#}
-                            {#                                    <div class="product__item__text">#}
-                            {#                                        <ul>#}
-                            {#                                            <li>Author: {{ book.author }}</li>#}
-                            {#                                            <li>Genre: {{ book.genre }}</li>#}
-                            {#                                        </ul>#}
-                            {#                                        <h5><a href="#">{{ book.title }}</a></h5>#}
-                            {#                                    </div>#}
-                            {#                                </div>#}
-                            {#                            </div>#}
-                            {#                            <div class="col-lg-4 col-md-6 col-sm-6">#}
-                            {#                                <div class="product__item">#}
-                            {#                                    <div class="product__item__pic set-bg" data-setbg="img/popular/popular-2.jpg">#}
-                            {##}
-                            {#                                    </div>#}
-                            {#                                    <div class="product__item__text">#}
-                            {#                                        <ul>#}
-                            {#                                            <li>Author: {{ book.author }}</li>#}
-                            {#                                            <li>Genre: {{ book.genre }}</li>#}
-                            {#                                        </ul>#}
-                            {#                                        <h5><a href="#">{{ book.title }}</a></h5>#}
-                            {#                                    </div>#}
-                            {#                                </div>#}
-                            {#                            </div>#}
-
                         </div>
                     </div>
 
@@ -90,48 +52,6 @@
                         {% if page_obj.has_next %}
                             <a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-double-right"></i></a>
                         {% endif %}
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="product__sidebar">
-                        <div class="product__sidebar__view">
-                            <div class="section-title">
-                                <h5>Top Views</h5>
-                            </div>
-                            {#                            <ul class="filter__controls">#}
-                            {#                                <li class="active" data-filter="*">Day</li>#}
-                            {#                                <li data-filter=".week">Week</li>#}
-                            {#                                <li data-filter=".month">Month</li>#}
-                            {#                                <li data-filter=".years">Years</li>#}
-                            {#                            </ul>#}
-                            <div class="filter__gallery">
-                                <div class="product__sidebar__view__item set-bg mix day years"
-                                     data-setbg="img/sidebar/tv-1.jpg">
-
-                                    <h5><a href="#">{{ book.title }}</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix month week"
-                                     data-setbg="img/sidebar/tv-2.jpg">
-
-                                    <h5><a href="#">{{ book.title }}</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix week years"
-                                     data-setbg="img/sidebar/tv-3.jpg">
-
-                                    <h5><a href="#">{{ book.title }}</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix years month"
-                                     data-setbg="img/sidebar/tv-4.jpg">
-
-                                    <h5><a href="#">{{ book.title }}</a></h5>
-                                </div>
-                                <div class="product__sidebar__view__item set-bg mix day"
-                                     data-setbg="img/sidebar/tv-5.jpg">
-
-                                    <h5><a href="#">{{ book.title }}</a></h5>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
