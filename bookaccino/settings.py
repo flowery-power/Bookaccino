@@ -127,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = (
@@ -143,10 +143,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# LOGIN_REDIRECT_URL = "index"
 LOGIN_URL = reverse_lazy('sign in')
-
-# AUTH_USER_MODEL = 'pythons_auth.PythonsUser'
 
 AUTH_USER_MODEL = 'bookaccino_auth.BookaccinoUser'
 AUTH_PROFILE_MODULE = 'bookaccino_auth.Profile'
@@ -161,3 +158,4 @@ cloudinary.config(
     api_key="275644793275972",
     api_secret="dmuN9pdw5hROeZM09aHZw5jAlUc"
 )
+

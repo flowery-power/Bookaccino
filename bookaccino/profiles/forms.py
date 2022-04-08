@@ -11,7 +11,8 @@ class ProfileForm(forms.ModelForm):
 
 
 class CreateProfileForm(ProfileForm):
-    pass
+    class Meta:
+        fields = ('first_name', 'last_name', 'profile_image')
 
 
 class EditProfileForm(ProfileForm):
@@ -23,15 +24,3 @@ class DeleteProfileForm(ProfileForm):
 
 
 
-
-
-# class SignUpForm(UserCreationForm, BootstrapFormMixin):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.setup_form()
-#
-#
-# class UserProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = UserProfile
-#         fields = ('profile_picture',)

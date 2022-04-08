@@ -1,6 +1,7 @@
 from django import forms
-
-from bookaccino.book.models import Book,  ProfileBook
+from .models import Comment
+from bookaccino.book import models
+from bookaccino.book.models import Book, ProfileBook
 
 
 class BookForm(forms.ModelForm):
@@ -19,6 +20,7 @@ class ProfileBookStateForm(forms.ModelForm):
 
 
 class AddBookForm(BookForm):
+    genres = forms.ModelChoiceField(models.Genre.objects.all())
     pass
 
 
@@ -30,3 +32,10 @@ class EditBookForm(BookForm):
     pass
 
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)
+        labels = {
+            "text": "What did you think?"
+        }

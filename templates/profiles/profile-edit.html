@@ -5,7 +5,7 @@
     <div class="col-lg-6">
         <div class="login__form">
             <h3>Edit Profile</h3>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
                     <div class="input__item">
@@ -20,7 +20,7 @@
                 {#                                <input type="text" placeholder="Password">#}
                 {#                                <span class="icon_lock"></span>#}
                 {#                            </div>#}
-                <button type="submit" class="site-btn">Login Now</button>
+                <button type="submit" class="site-btn">Edit</button>
             </form>
 {#            <a href="#" class="forget_pass">Forgot Your Password?</a>#}
         </div>

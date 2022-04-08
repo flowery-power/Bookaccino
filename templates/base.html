@@ -29,10 +29,6 @@
     <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 </head>
 <body>
-<!-- Page Preloader -->
-{#    <div id="preloder">#}
-{#        <div class="loader"></div>#}
-{#    </div>#}
 <!-- Header Section Begin -->
 <header class="header">
     <div class="container">
@@ -67,20 +63,27 @@
                 <div class="header__right">
                     {% if not user.is_authenticated %}
 
-                        <a href="{% url "sign up" %}">Sign Up</a>
+                        <a href="{% url "sign up" %}">Register</a>
                         <a href="{% url "sign in" %}">Login</a>
                     {% endif %}
                     {% if user.is_authenticated %}
 
                         <a href="{% url "sign out" %}">Logout</a>
                         {% if user.is_superuser %}
-                            <a href="{% url "create book" %}">ADD/CREATE book</a>
+                            <a href="{% url "create book" %}">Add book</a>
                         {% endif %}
 
+                        {% if user.is_authenticated %}
+                            {% if user.profile.first_name %}
+                                <a href="{% url "details profile" user.profile.pk %}">
+                                    <img class="img_tag_small" src="{{ user.profile.profile_image.url }} "/>
+                                </a>
+                            {% else %}
+                                <a href="{% url "edit profile" user.profile.pk %}"><span class="icon_profile"></span></a>
+                            {% endif %}
 
-                        {#                    <a href="{% url " profile" 2%}">Profile</a>#}
-                        <a href="{% url "details profile" user.id %}">
-                            <img class="img_tag_small" src="{{profile.profile_image.url}} "/></a>
+                        {% endif %}
+
                     {% endif %}
 
 
@@ -91,8 +94,11 @@
     </div>
 </header>
 <!-- Header End -->
+<div class="page-wrap">
+
 {% block content %}
 {% endblock content %}
+</div>
 
 <footer class="footer">
     <div class="page-up">
@@ -102,7 +108,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="footer__logo">
-                    <a href="{% url 'home' %}"><img src="{% static "img/bookaccino.jpg" %}" alt=""></a>
+                    <a href="{% url 'home' %}"><img src="{% static "img/bookaccino.jpg" %}"></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -111,7 +117,7 @@
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                     All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by
-                    <a href="https://colorlib.com" target="_blank">Ts.Gabrovska</a>
+                    <a href="mailto:gabrovska.tsvetelina@gmail.com">Ts.Gabrovska</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             </div>
         </div>
@@ -119,15 +125,7 @@
 </footer>
 
 <!-- Footer Section End -->
-<!-- Search model Begin -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch"><i class="icon_close"></i></div>
-        <form action="{% url 'search' %}" class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search books" name="keyword">
-        </form>
-    </div>
-</div>
+
 <!-- Search model end -->
 <!-- Js Plugins -->
 <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>

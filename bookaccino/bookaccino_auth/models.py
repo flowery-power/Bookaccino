@@ -25,11 +25,14 @@ class BookaccinoUser(AbstractBaseUser, PermissionsMixin):
 class Profile(models.Model):
     first_name = models.CharField(
         max_length=30,
-        null=True
+        blank=True,
+        default=""
     )
     last_name = models.CharField(
         max_length=30,
-        null=True,
+        blank=True,
+        default=""
+
     )
     profile_image = cloudinary_models.CloudinaryField(
         resource_type='image',

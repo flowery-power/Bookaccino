@@ -27,8 +27,8 @@
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="{% url 'delete profile' profile.id %}" class="follow-btn">Delete</a>
-                                <a href="{% url 'edit profile' profile.id %}" class="follow-btn"><span>Edit</span> </a>
+                                <a href="{% url 'delete profile' profile.pk %}" class="follow-btn"><span>Delete</span> </a>
+                                <a href="{% url 'edit profile' profile.pk %}" class="follow-btn"><span>Edit</span> </a>
                             </div>
                         </div>
                     </div>

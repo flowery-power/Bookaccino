@@ -1,15 +1,10 @@
 from django.contrib.contenttypes.fields import GenericRelation
-from django.utils.timezone import now
 
-from django.contrib.auth import get_user_model
 from django.db import models
 
-# Create your models here.
 from star_ratings.models import Rating
 
 from bookaccino.bookaccino_auth.models import BookaccinoUser, Profile
-
-UserModel = get_user_model()
 
 
 class Genre(models.Model):
@@ -36,14 +31,8 @@ class Book(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     ratings = GenericRelation(Rating, related_query_name='books')
 
-
     def __str__(self):
         return self.title
-
-    # user = models.ForeignKey(
-    #     UserModel,
-    #     on_delete=models.CASCADE,
-    # )
 
 
 class ProfileBook(models.Model):
@@ -65,17 +54,7 @@ class ProfileBook(models.Model):
     )
 
     class Meta:
-        unique_together = [['profile', 'book']]
-
-
-class Author(models.Model):
-    pass
-
-
-class Image(models.Model):
-    image = models.ImageField(upload_to='images')
-
-
+         unique_together= [['profile', 'book']]
 
 
 class Quote(models.Model):
@@ -83,3 +62,10 @@ class Quote(models.Model):
     author = models.CharField(
         max_length=200,
     )
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(BookaccinoUser, related_name="comments", on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField()
+    book = models.ForeignKey(Book, related_name="comments", on_delete=models.CASCADE)

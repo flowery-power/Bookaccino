@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from bookaccino.book.models import Book, Genre, ProfileBook, Quote
+from bookaccino.book.models import Book, Genre, ProfileBook, Quote, Comment
 from bookaccino.bookaccino_auth.models import Profile
 
 
@@ -28,6 +28,7 @@ class BookAdmin(admin.ModelAdmin):
 admin.site.register(ProfileBook)
 admin.site.register(Genre)
 admin.site.register(Quote)
+admin.site.register(Comment)
 
 
 

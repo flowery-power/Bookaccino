@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <section class="form-section">
+        <div class="col-lg-6">
+        <div class="anime__details__form">
+            <div class="section-title">
+                <h5>Add Your Review</h5>
+            </div>
+            <form action="#" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
+            </form>
+
+
+        </div>
+    </div>
+
+    </section>
+
+{% endblock %}
+

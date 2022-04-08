@@ -1,7 +1,7 @@
-from django.contrib.auth import authenticate, logout, logout, get_user_model
+from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView
 
@@ -24,6 +24,11 @@ class SignUpView(CreateView):
 
     def get_success_url(self):
         return reverse('home')
+
+    def get_form_kwargs(self):
+        form_kwargs = super().get_form_kwargs()
+        form_kwargs['request'] = self.request
+        return form_kwargs
 
 
 @login_required
