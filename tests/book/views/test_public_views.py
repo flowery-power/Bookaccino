@@ -3,20 +3,9 @@ from django.test.client import Client
 from star_ratings.models import Rating
 
 from bookaccino.book.models import Book, Genre, Quote
+from tests.create_objects import createObjects
 
 MODELS = [Rating, Genre, Book, Quote]
-
-
-def createObjects():
-    Genre.objects.create(name='Test')
-    Quote.objects.create(text='Random quote')
-
-    for x in range(3):
-        Book.objects.create(
-            title=f'book {x}',
-            genre_id=Genre.objects.first().id,
-            image='fake-img.jpg'
-        )
 
 
 class PublicViewTests(TestCase):
@@ -30,6 +19,12 @@ class PublicViewTests(TestCase):
             for obj in model.objects.all():
                 obj.delete()
 
-    def test_getProfilesIndex_shouldRenderTemplate(self):
+    def test_homeNoProfile_view(self):
         response = self.client.get('')
         self.assertTemplateUsed(response, 'profiles/home-no-profile.html')
+        self.assertTrue('books_recommendation' in response.context)
+        self.assertTrue('listopia' in response.context)
+        self.assertTrue('recently' in response.context)
+        self.assertTrue('most_popular' in response.context)
+        self.assertTrue('quote' in response.context)
+

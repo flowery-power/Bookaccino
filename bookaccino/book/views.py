@@ -29,9 +29,9 @@ class PublicHome(TemplateView):
         context['quote'] = random_items[0]
 
         if most_rated:
-            context['mostPopular'] = most_rated[0]
+            context['most_popular'] = most_rated[0]
         else:
-            context['mostPopular'] = random.sample(list(Book.objects.all()), 1)[0]
+            context['most_popular'] = random.sample(list(Book.objects.all()), 1)[0]
 
         return context
 

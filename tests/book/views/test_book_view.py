@@ -10,7 +10,7 @@ MODELS = [Genre, Book, Quote]
 class BookViewTests(TestCase):
 
     def createObjects(self):
-        Genre.objects.create(name='Test')
+        self.genre = Genre.objects.create(name='Test')
 
         for x in range(3):
             book = Book.objects.create(
@@ -94,9 +94,10 @@ class BookViewTests(TestCase):
         self.assertEqual(test_response.context['book'].title, u'book')
 
     def test_genres_list(self):
-        test_response = self.client.get('/genres/1')
+        test_response = self.client.get(f'/genres/{self.genre.id}')
         self.assertEqual(test_response.status_code, 200)
         self.assertTrue('page_obj' in test_response.context)
         self.assertTrue('genre' in test_response.context)
         self.assertTemplateUsed(test_response, 'books/genres.html')
+
 
