@@ -148,7 +148,6 @@ def books(request):
     page_read = paginator_read.get_page(page)
 
     data = {
-        'books': books,
         'page_current': page_current,
         'page_want': page_want,
         'page_read': page_read

@@ -17,6 +17,9 @@ class Genre(models.Model):
 
 
 class Book(models.Model):
+    class Meta:
+        ordering = ['-id']
+
     title = models.CharField(
         max_length=80,
     )
@@ -54,7 +57,8 @@ class ProfileBook(models.Model):
     )
 
     class Meta:
-         unique_together= [['profile', 'book']]
+        unique_together = [['profile', 'book']]
+        ordering = ['-id']
 
 
 class Quote(models.Model):
