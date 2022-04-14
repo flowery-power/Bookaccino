@@ -1,6 +1,5 @@
 from django import forms
 from .models import Comment
-from bookaccino.book import models
 from bookaccino.book.models import Book, ProfileBook
 
 
@@ -17,19 +16,6 @@ class ProfileBookStateForm(forms.ModelForm):
         labels = {
             'book_state': '',
         }
-
-
-class AddBookForm(BookForm):
-    genres = forms.ModelChoiceField(models.Genre.objects.all())
-    pass
-
-
-class DetailsBookForm(BookForm):
-    pass
-
-
-class EditBookForm(BookForm):
-    pass
 
 
 class CommentForm(forms.ModelForm):

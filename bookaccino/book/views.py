@@ -41,9 +41,10 @@ class LoggedInHome(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['books'] = Book.objects.all()[:3]
-        context['listopia'] = Book.objects.all()[3:6]
-        context['recently'] = Book.objects.all()[6:9]
+        context['books'] = Book.objects.filter(ratings__isnull=False).order_by(
+            'ratings__count', 'ratings__average').reverse()[:3]
+        context['listopia'] = random.sample(list(Book.objects.all()), 3)
+        context['recently'] = Book.objects.all()[:3]
 
         user_books = self.request.user.profile.books.all()
 
@@ -147,13 +148,13 @@ def books(request):
     paginator_read = Paginator(read, 3)
     page_read = paginator_read.get_page(page)
 
-    data = {
+    context = {
         'page_current': page_current,
         'page_want': page_want,
         'page_read': page_read
 
     }
-    return render(request, 'books/books.html', data)
+    return render(request, 'books/books.html', context)
 
 
 def genres(request, pk):
@@ -163,8 +164,8 @@ def genres(request, pk):
     page = request.GET.get('page')
     page_obj = paginator.get_page(page)
 
-    data = {
+    context = {
         'page_obj': page_obj,
         'genre': genre,
     }
-    return render(request, 'books/genres.html', data)
+    return render(request, 'books/genres.html', context)

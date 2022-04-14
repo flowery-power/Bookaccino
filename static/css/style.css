@@ -134,6 +134,26 @@ html, body {
     margin-top:60px;
 }
 
+.edit__book, .input__item {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit__book.login__form .input__item .white-label {
+    display: block;
+}
+
+.edit__book.login__form .input__item .nice-select {
+    width: 107px;
+    height: 46px;
+    display: block;
+}
+
+
+label[for="something"] {
+   /* woohoo! */
+}
+
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -1008,6 +1028,8 @@ html, body {
 .edit {
     padding-bottom: 189px;
 }
+
+
 
 /*---------------------
   Book Details

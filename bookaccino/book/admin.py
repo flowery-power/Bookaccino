@@ -7,8 +7,8 @@ from bookaccino.bookaccino_auth.models import Profile
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    # list_display = ('title', 'author', 'genre')
-    # list_display = ('id', 'thumbnail', 'title',)
+    list_display = ('title', 'author', 'genre')
+    list_display = ('id', 'thumbnail', 'title',)
     def thumbnail(self, object):
         return format_html('<img src="{}" width="40" />'.format(object.image.url))
 
@@ -21,8 +21,7 @@ class BookAdmin(admin.ModelAdmin):
             kwargs["queryset"] = Genre.objects.all()
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
-    def likes_count(self, obj):
-        return obj.like_set.count()
+
 
 
 admin.site.register(ProfileBook)

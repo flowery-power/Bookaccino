@@ -1,8 +1,6 @@
 from django.test import TestCase
 from django.test.client import Client
-from star_ratings.models import Rating
 
-from bookaccino.book.models import Book, Genre, Quote
 from bookaccino.bookaccino_auth.models import BookaccinoUser, Profile
 from tests.create_objects import createObjects
 
