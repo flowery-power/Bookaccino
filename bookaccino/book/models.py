@@ -67,9 +67,15 @@ class Quote(models.Model):
         max_length=200,
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Comment(models.Model):
     user = models.ForeignKey(BookaccinoUser, related_name="comments", on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
     book = models.ForeignKey(Book, related_name="comments", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

@@ -44,7 +44,7 @@ class LoggedInHome(LoginRequiredMixin, TemplateView):
         context['books'] = Book.objects.filter(ratings__isnull=False).order_by(
             'ratings__count', 'ratings__average').reverse()[:3]
         context['listopia'] = random.sample(list(Book.objects.all()), 3)
-        context['recently'] = Book.objects.all()[:3]
+        context['recently'] = Book.objects.all().order_by('created_date')[:3]
 
         user_books = self.request.user.profile.books.all()
 
@@ -85,7 +85,7 @@ class BookDetailsView(FormView, views.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        books = random.sample(list(Book.objects.all()), 3)
+        books_random = random.sample(list(Book.objects.all()), 3)
 
         profile_book = ProfileBook.objects.filter(book_id=self.object.id)
         form = self.get_form()
@@ -93,7 +93,7 @@ class BookDetailsView(FormView, views.DetailView):
             form.fields['book_state'].initial = profile_book[0].book_state
         context['book'] = self.object
         context['form'] = form
-        context['books'] = books
+        context['books'] = books_random
 
         return context
 

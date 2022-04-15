@@ -3,12 +3,6 @@ from .models import Comment
 from bookaccino.book.models import Book, ProfileBook
 
 
-class BookForm(forms.ModelForm):
-    class Meta:
-        model = Book
-        fields = '__all__'
-
-
 class ProfileBookStateForm(forms.ModelForm):
     class Meta:
         model = ProfileBook
