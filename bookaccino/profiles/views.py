@@ -33,9 +33,3 @@ class ProfileEditView(BootstrapFormViewMixin, views.UpdateView):
     success_url = reverse_lazy('home')
     fields = ('first_name', 'last_name', 'profile_image')
 
-
-class ProfileDeleteView(LoginRequiredMixin, views.DeleteView):
-    model = Profile
-    template_name = 'profiles/profile-delete.html'
-    success_url = reverse_lazy('home')
-    fields = ('first_name', 'last_name', 'profile_image')

@@ -15,12 +15,5 @@ class CreateProfileForm(ProfileForm):
         fields = ('first_name', 'last_name', 'profile_image')
 
 
-class EditProfileForm(ProfileForm):
-    pass
-
-
-class DeleteProfileForm(ProfileForm):
-    pass
-
 
 

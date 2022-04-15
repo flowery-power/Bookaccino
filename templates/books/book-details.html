@@ -43,9 +43,10 @@
                             </div>
                             <div class="anime__details__btn">
                                 {% if user.is_superuser %}
-
                                     <a href="{% url 'delete book' book.id %}" class="follow-btn"> Delete</a>
+                                {% endif %}
 
+                                {% if user.is_staff %}
                                     <a href=" {% url "edit book"  book.id %}" class="follow-btn"><span>Edit</span></a>
                                 {% endif %}
                                 {% if user.is_authenticated %}
@@ -75,7 +76,11 @@
                         {% for comment in book.comments.all %}
                             <div class="anime__review__item">
                                 <div class="anime__review__item__pic">
-                                    <img src="{{ comment.user.profile.profile_image.url }}">
+                                    {% if comment.user.profile.profile_image %}
+                                        <img src="{{ comment.user.profile.profile_image.url }}">
+                                    {% else %}
+                                        <span class="icon_profile"></span>
+                                    {% endif %}
                                 </div>
                                 <div class="anime__review__item__text">
                                     <h6>{{ comment.user.profile.first_name }} - <span> {{ comment.date | date }}</span>
