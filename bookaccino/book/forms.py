@@ -1,6 +1,6 @@
 from django import forms
 from .models import Comment
-from bookaccino.book.models import Book, ProfileBook
+from bookaccino.book.models import ProfileBook
 
 
 class ProfileBookStateForm(forms.ModelForm):

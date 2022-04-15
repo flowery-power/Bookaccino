@@ -22,13 +22,10 @@ class BookAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-
-
 admin.site.register(ProfileBook)
 admin.site.register(Genre)
 admin.site.register(Quote)
 admin.site.register(Comment)
-
 
 
 @admin.register(Profile)
