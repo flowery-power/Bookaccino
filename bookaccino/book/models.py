@@ -68,7 +68,7 @@ class Quote(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.text
 
 
 class Comment(models.Model):
@@ -78,4 +78,4 @@ class Comment(models.Model):
     book = models.ForeignKey(Book, related_name="comments", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.text
