@@ -7,6 +7,29 @@
 ### Description
 Bookaccino is a site for readers and book recommendations. Our mission is to help people find and share books they love.
 
+### Running the project locally
+```sh
+# 1) create & activate venv
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 2) verify you're in the venv
+which python
+python -V
+python -m pip -V
+
+# 3) install deps from requirements.txt
+#python -m pip install -U pip setuptools wheel
+python -m pip install -r requirements.txt
+
+# 4) check deps (dependencies) are good
+python manage.py check
+
+# 5) run
+python manage.py migrate
+python manage.py runserver
+```
+
 ### Simplest Ways to Make the Best of Bookaccino:
 1. Set up a profile on Bookaccino.
 2. Add you favorite books.
