@@ -19,19 +19,20 @@ class PublicHome(TemplateView):
         context = super().get_context_data(**kwargs)
         most_rated = Book.objects.filter(ratings__isnull=False).order_by('ratings__average').order_by(
             'ratings__count').reverse()[:3]
+        r_books_count = len(most_rated)
         context['books_recommendation'] = most_rated
-        random_books = random.sample(list(Book.objects.all()), 3)
+        random_books = random.sample(list(Book.objects.all()), 3) if r_books_count >= 3 else []
         context['listopia'] = random_books
         context['recently'] = Book.objects.all().order_by('created_date')[:3]
 
         items = list(Quote.objects.all())
-        random_items = random.sample(items, 1)
-        context['quote'] = random_items[0]
+        random_items = random.sample(items, 1) if r_books_count >= 1 else []
+        context['quote'] = random_items[0] if r_books_count >= 1 else None
 
         if most_rated:
             context['most_popular'] = most_rated[0]
         else:
-            context['most_popular'] = random.sample(list(Book.objects.all()), 1)[0]
+            context['most_popular'] = random.sample(list(Book.objects.all()), 1)[0] if r_books_count >= 1 else None
 
         return context
 
