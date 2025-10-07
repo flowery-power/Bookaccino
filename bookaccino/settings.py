@@ -83,13 +83,19 @@ WSGI_APPLICATION = 'bookaccino.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DATABASE_NAME', 'bookaccino'),
-        'USER': os.environ.get('DATABASE_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', '123qwe'),
-        'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),
-        'PORT': '5432',
+# comment for now until we set up PostgreSQL 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.environ.get('DATABASE_NAME', 'bookaccino'),
+    #     'USER': os.environ.get('DATABASE_USER', 'postgres'),
+    #     'PASSWORD': os.environ.get('DATABASE_PASSWORD', '123qwe'),
+    #     'HOST': os.environ.get('DATABASE_HOST', '127.0.0.1'),
+    #     'PORT': '5432',
+    # }
+
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
