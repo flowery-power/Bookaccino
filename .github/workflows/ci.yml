@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "github-acions" ]
+    branches: [ "github-actions" ]
   pull_request:
-    branches: [ "github-acions" ]
+    branches: [ "github-actions" ]
 
 jobs:
   build:
