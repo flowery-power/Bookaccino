@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ "github-acions" ]
+  pull_request:
+    branches: [ "github-acions" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps (optional)
+        run: |
+          if [ -f requirements.txt ]; then
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+          fi
+
+      - name: Run tests 
+        run: |
+          if [ -f pytest.ini ] || [ -d tests ]; then
+            pytest -q
+          else
+            echo "No tests configured."
