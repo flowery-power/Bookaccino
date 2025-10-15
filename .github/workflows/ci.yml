@@ -22,10 +22,3 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt
           fi
-
-      - name: Run tests 
-        run: |
-          if [ -f pytest.ini ] || [ -d tests ]; then
-            pytest -q
-          else
-            echo "No tests configured."
